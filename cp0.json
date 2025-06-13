@@ -297,11 +297,7 @@
         "inputs": { "registers": [] },
         "outputs": { "registers": [] }
       },
-      "control_flow": { "branches": [], "nobranch": true },
-      "implementation": {
-        "file": "stackops.cpp",
-        "body": "int x = (args >> 8) & 15, y = (args >> 4) & 15, z = args & 15;\nStack& stack = st->get_stack();\nVM_LOG(st) << \"execute XCHG3 s\" << x << \",s\" << y << \",s\" << z;\nstack.check_underflow_p(x, y, z, 2);\nswap(stack[2], stack[x]);\nswap(stack[1], stack[y]);\nswap(stack[0], stack[z]);\nreturn 0; \n.insert(OpcodeInstr::mkfixed(0x4, 4, 12, instr::dump_3sr(\"XCHG3 \"), exec_xchg3))"
-      }    
+      "control_flow": { "branches": [], "nobranch": true }
     },
     {
       "mnemonic": "XCHG2",
